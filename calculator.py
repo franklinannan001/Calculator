@@ -17,6 +17,8 @@ def main():
                         print(f"Product: {multiplication(x, y)}")
                     elif "/" in operation:
                         print(f"Division: {division(x, y):.2f}")
+                    elif "//" in operation:
+                        print(f"Modulus: {modulus(x, y)}")
                 except ValueError:
                     print(f"Please check your values: {operation}")
 
@@ -28,7 +30,7 @@ def main():
 
 #extracting the values of x and y
 def extract(o):
-    signs = ["+", "-", "*", "/"]
+    signs = ["+", "-", "*", "/", "//"]
     for character in o:
         if character in signs:
             return o.split(f"{character}")
@@ -50,6 +52,10 @@ def multiplication(x, y):
 
 def division(x, y):
     return x / y
+
+
+def modulus(x, y):
+    return x // y
 
 
 if __name__ == "__main__":
