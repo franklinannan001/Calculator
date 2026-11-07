@@ -57,7 +57,8 @@ def get_ref(o):
 
 # extracting the values of x and y
 def extract_values(o):
-    if ref := get_ref(o) is not None:
+    ref = get_ref(o)
+    if ref is not None:
         return o.split(f"{ref}")
     else:
         return None
