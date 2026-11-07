@@ -6,7 +6,7 @@ def main():
             operation = input("Operation: ").strip()
             values = extract(operation)
             if values is not None:
-                signs = ["+", "-", "*", "/", "//", "**"]
+                signs = ["+", "-", "*", "/", "%", "**"]
                 ref = ""
                 for character in operation:
                     if character in signs:
@@ -21,11 +21,17 @@ def main():
                     elif ref == "*":
                         print(f"Product: {multiplication(x, y)}")
                     elif ref == "**":
-                        print(f"Power: {power(x, y)}")
+                        print(f"Exponential: {power(x, y)}")
                     elif ref == "/":
-                        print(f"Division: {division(x, y):.2f}")
-                    elif ref == "//":
-                        print(f"Modulus: {modulus(x, y)}")
+                        try:
+                            print(f"Division: {division(x, y):.2f}")
+                        except ZeroDivisionError:
+                            print("Cannot divide by zero")
+                    elif ref == "%":
+                        try:
+                            print(f"Modulus: {modulus(x, y)}")
+                        except ZeroDivisionError:
+                            print("Cannot divide by zero")
                 except ValueError:
                     print(f"Please check your values: {operation}")
 
@@ -37,7 +43,7 @@ def main():
 
 #extracting the values of x and y
 def extract(o):
-    signs = ["+", "-", "*", "/", "//", "**"]
+    signs = ["+", "-", "*", "/", "%", "**"]
     ref = ""
     for character in o:
         if character in signs:
@@ -66,7 +72,7 @@ def division(x, y):
 
 
 def modulus(x, y):
-    return x // y
+    return x % y
 
 
 def power(x, y):
