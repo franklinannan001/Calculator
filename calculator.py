@@ -6,13 +6,9 @@ def main():
     while True:
         try:
             operation = input(">>> ").strip()
-            values = extract(operation)
+            values = extract_values(operation)
             if values is not None:
-                signs = ["+", "-", "*", "/", "%", "**"]
-                ref = ""
-                for character in operation:
-                    if character in signs:
-                        ref += character
+                ref = get_ref(operation)
                 try:
                     x = int(values[0])
                     y = int(values[1])
@@ -45,15 +41,23 @@ def main():
             sys.exit("\n=~=~=~=~=~ Thank you for visiting ~=~=~=~=~=\n")
 
 
-# extracting the values of x and y
-def extract(o):
-    signs = ["+", "-", "*", "/", "%", "**"]
+# extracting and storing the sign in the equation
+def get_ref(o):
+    signs = ["-", "+", "*", "/", "%", "**"]
     ref = ""
     for character in o:
         if character in signs:
             ref += character
 
     if len(ref) >= 1:
+        return ref
+    else:
+        return None
+
+
+# extracting the values of x and y
+def extract_values(o):
+    if ref := get_ref(o) is not None:
         return o.split(f"{ref}")
     else:
         return None
