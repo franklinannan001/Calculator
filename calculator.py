@@ -1,9 +1,10 @@
 import sys
 
 def main():
+    print("\n=~=~=~=~=~ CALCULATOR ~=~=~=~=~=")
     while True:
         try:
-            operation = input("Operation: ").strip()
+            operation = input(">>> ").strip()
             values = extract(operation)
             if values is not None:
                 signs = ["+", "-", "*", "/", "%", "**"]
@@ -32,13 +33,15 @@ def main():
                             print(f"Modulus: {modulus(x, y)}")
                         except ZeroDivisionError:
                             print("Cannot divide by zero")
+                    else:
+                        print("Invalid equation")
                 except ValueError:
                     print(f"Please check your values: {operation}")
 
             else:
                 print(f"{operation} is not a valid equation")
         except KeyboardInterrupt:
-            sys.exit("\nThank you for visiting")
+            sys.exit("\n=~=~=~=~=~ Thank you for visiting ~=~=~=~=~=\n")
 
 
 #extracting the values of x and y
