@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     print("\n=~=~=~=~=~ CALCULATOR ~=~=~=~=~=")
     while True:
@@ -44,7 +45,7 @@ def main():
             sys.exit("\n=~=~=~=~=~ Thank you for visiting ~=~=~=~=~=\n")
 
 
-#extracting the values of x and y
+# extracting the values of x and y
 def extract(o):
     signs = ["+", "-", "*", "/", "%", "**"]
     ref = ""
@@ -79,7 +80,7 @@ def modulus(x, y):
 
 
 def power(x, y):
-    return x ** y
+    return x**y
 
 
 if __name__ == "__main__":
