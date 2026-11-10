@@ -1,4 +1,5 @@
 import sys
+import re
 
 
 def main():
@@ -22,7 +23,7 @@ def main():
                         print(f"Exponential: {x ** y}")
                     elif ref == "/":
                         try:
-                            print(f"Division: {x / y:.2f}")
+                            print(f"Quotient: {x / y:.2f}")
                         except ZeroDivisionError:
                             print("Cannot divide by zero")
                     elif ref == "%":
@@ -43,14 +44,8 @@ def main():
 
 # extracting and storing the sign in the equation
 def get_ref(o):
-    signs = ["-", "+", "*", "/", "%", "**"]
-    ref = ""
-    for character in o:
-        if character in signs:
-            ref += character
-
-    if len(ref) >= 1:
-        return ref
+    if equation := re.search(r"^[0-9]+\s*(-|\+|\*\*?|/|%)\s*[0-9]+$", o):
+        return equation.group(1)
     else:
         return None
 
